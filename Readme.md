@@ -1,8 +1,6 @@
-# Multispeciality Hospital website
+# Spandan- Multispeciality Hospital website
 
 A Multispeciality Hospital website, using Nodejs.
-
-(under development)
 
 ## To install and view locally
 
