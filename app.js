@@ -66,7 +66,20 @@ app.get("/bloodStorage",(req,res)=>{
     res.render("bloodStorage");
 });
 
-let port = process.env.PORT || 3000
+app.get("/contact", (req, res) => {
+    res.render("contact");
+});
+
+app.get("/login", (req, res) => {
+    res.render("login");
+});
+
+
+app.get("/register",(req,res)=>{
+    res.render("register");
+});
+
+let port = process.env.PORT || 8080
 app.listen(port, ()=>{
-    console.log("Listening to port 3000.");
+    console.log("Listening to port 8080.");
 });
