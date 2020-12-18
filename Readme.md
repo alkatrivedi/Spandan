@@ -5,8 +5,8 @@ A Multispeciality Hospital website, using Nodejs.
 ## To install and view locally
 
 ```bash
-$ git clone https://github.com/snehal2841/Multispeciality-Hospital.git
-$ cd Multispeciality-Hospital
+$ git clone https://github.com/alkatrivedi/Spandan.git
+$ cd Spandan
 $ npm install
 $ node app.js
 ```
