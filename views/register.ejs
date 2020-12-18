@@ -1,5 +1,69 @@
 <%- include('./partials/header') %>
 
-<h1>this is contact page</h1>
+<link rel="stylesheet" type="text/css" href="/stylesheets/registerStyle.css">
+<div class="container" id="mainContainer">
+	<h1 class="well" id="formHead">Registration Form</h1>
+	<form action="/user" method="POST">
+		<!-- <input type="text" name="firstName" placeholder="first name">
+		<input type="text" name="lastName" placeholder="last name">
+		<input type="text" name="city" placeholder="city">
+		<button>Submit!</button> -->
+		<div class="row">
+			<div class="col-sm-6 form-group">
+				<label>First Name</label>
+				<input type="text" name="firstName" placeholder="Enter your First Name Here.." class="form-control">
+			</div>
+			<div class="col-sm-6 form-group">
+				<label>Last Name</label>
+				<input type="text" name="lastName" placeholder="Enter your Last Name Here.." class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label>Address</label>
+			<!-- <textarea placeholder="Enter Address Here.." rows="3" class="form-control"></textarea> -->
+			<input type="text" name="address" placeholder="Enter Address Here.." rows="3" class="form-control">
+		</div>
+		<div class="row">
+			<div class="col-sm-4 form-group">
+				<label>City</label>
+				<input type="text" name="city" placeholder="Your City.." class="form-control">
+			</div>	
+			<div class="col-sm-4 form-group">
+				<label>State</label>
+				<input type="text" name="state" placeholder="Your State.." class="form-control">
+			</div>	
+			<div class="col-sm-4 form-group">
+				<label>Blood Group</label>
+				<input type="text" name="blood" placeholder="Your Blood Group.." class="form-control">
+			</div>		
+		</div>
+		<div class="row">
+			<div class="col-sm-6 form-group">
+				<label>Username</label>
+				<input type="text" name="username" placeholder="Enter Username Here.." class="form-control">
+			</div>		
+			<div class="col-sm-6 form-group">
+				<label>Password</label>
+				<input type="password" name="password" placeholder="Enter Password Here.." class="form-control">
+			</div>	
+		</div>
+		<div class="form-group">
+			<label>Phone Number</label>
+			<input type="text" name="phone" placeholder="Enter Phone Number Here.." class="form-control">
+		</div>	
+			
+		<div class="form-group">
+			<label>Email Address</label>
+			<input type="email" name="email" placeholder="Your Email Address Here.." class="form-control">
+		</div>	
+		
+		<div class="form-group">
+			<label>Aadhar Card No.</label>
+			<input type="text" name="aadhar" placeholder="×××× ×××× ××××" class="form-control">
+		</div>
+		<button class="btn btn-lg btn-info">Submit</button>
+	</form>
+</div>
+
 
 <%- include('./partials/footer') %>
