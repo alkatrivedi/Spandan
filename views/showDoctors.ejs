@@ -1,0 +1,16 @@
+<%- include('./partials/header') %>
+
+<h1 style="margin-top:70px">here goes the list of doctors</h1>
+<% doctors.forEach(function(doctor){ %>
+    <div style="background-color: grey;">
+        <%= doctor.firstName %>
+        <%= doctor.lastName %>
+        <p>
+            <a href="/showDoctors/<%= doctor._id %>" class="btn btn-primary">More Info</a>
+        </p>
+    </div>
+<% }); %>
+
+
+
+<%- include('./partials/footer') %>
