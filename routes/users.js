@@ -52,4 +52,10 @@ router.post("/login",passport.authenticate("local",
         req.flash("success","Welcome Back!!!");
 });
 
+router.get('/logout', (req, res) => {
+    req.logout();
+    req.flash('success', "Goodbye!");
+    res.redirect('/');
+})
+
 module.exports=router;
