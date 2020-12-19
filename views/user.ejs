@@ -1,0 +1,25 @@
+<%- include('./partials/header') %>
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/user.css"></link>
+
+<h1 style="margin-top:50px">Here goes the User Profile</h1>
+
+<div class="main">
+    <ul class="cards">
+        <% users.forEach(function(user){ %>
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image"><img src="https://picsum.photos/500/300/?image=10"></div>
+          <div class="card_content">
+            <h2 class="card_title"><%= user.firstName %> <%= user.lastName %></h2>
+            <p class="card_text">blah blah blah blah.......</p>
+            <a href="/user/<%= user._id %>"><button class="btn card_btn">More Info</button></a>
+          </div>
+        </div>
+      </li>
+      <% }); %>
+    </ul>
+  </div>
+
+
+<%- include('./partials/footer') %>
