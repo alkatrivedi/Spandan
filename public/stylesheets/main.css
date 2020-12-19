@@ -211,9 +211,9 @@ footer {
   transition: 0.2s;
 }
 .floatingNav {
-  width: calc(25vh - 2px);
-  border-radius: 2px;
-  box-shadow: 0px 1px 2px rgb(196, 186, 186);
+  width: calc(100vh - 100px);
+  border-radius: 8px;
+  box-shadow: 4px 2px 10px rgb(22, 21, 21);
 }
 #mainNavbar .navbar-brand {
   color: black;
@@ -221,6 +221,7 @@ footer {
   font-size: 25px;
   margin: 3px 10px 5px 1px;
   padding: 5px 3px 3px 1px;
+  
 }
 #mainNavbar .nav-link {
   font-family: "nunito", sans-serif;
@@ -260,28 +261,8 @@ footer {
 nav ul li a,
 nav ul li a:after,
 nav ul li a:before {
-  transition: all 0.2s;
+  transition: all .2s;
 }
-nav.stroke ul li a {
-  position: relative;
-}
-nav.stroke ul li a:after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 0%;
-  content: ".";
-  color: transparent;
-  background: rgb(143, 142, 142);
-  height: 1px;
-}
-nav.stroke ul li a:hover:after {
-  width: 100%;
-}
-<<<<<<< HEAD
-=======
 nav.stroke ul li a{
     position: relative;
   }
@@ -305,7 +286,6 @@ nav.stroke ul li a{
     width: 45px;
     height: 45px;
   }
->>>>>>> 0d1090ad78e6567dc39214bacdcdaa27912cec6a
 /* ***********************************search box************************************ */
 /* 
   input[type=text] {
