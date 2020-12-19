@@ -4,10 +4,11 @@ const express                            = require("express"),
       passport                           = require("passport"),
       LocalStrategy                      = require("passport-local"),
       methodOverride                     = require("method-override"),
-      bodyParser                         = require("body-parser");
+      bodyParser                         = require("body-parser"),
      // Departments                        = require("./models/departments"),
      // Treatmentreceipt                   = require("./models/treatmentreceipt"),
-     User                               = require("./models/user");
+     User                                = require("./models/user"),
+     session                             = require('express-session');
 
 const userRoutes=require("./routes/users"); 
 
@@ -56,7 +57,6 @@ passport.use(new LocalStrategy({
     passwordField: 'password'
 }, User.authenticate()));
 
-
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
@@ -80,6 +80,7 @@ passport.deserializeUser(User.deserializeUser());
      ],
 });*/
 
+app.use("/", userRoutes);
  //var User = mongoose.model("User", userSchema);
  //prescription model
  var prescriptionSchema = new mongoose.Schema({
@@ -91,11 +92,11 @@ passport.deserializeUser(User.deserializeUser());
 var Prescription = mongoose.model("Prescription", prescriptionSchema);
 
 
-app.use("/",userRoutes);
 
-app.get("/", (req,res)=>{
-    res.render("home");
-});
+
+// app.get("/", (req,res)=>{
+//     res.render("home");
+// });
 
 app.get("/aboutUs",(req,res)=>{
     res.render("aboutUs");
@@ -120,15 +121,18 @@ app.get("/covid",(req,res)=>{
 app.get("/login", (req, res) => {
     res.render("login");
 });
+// app.get("/login", (req, res) => {
+//     res.render("login");
+// });
 
-app.post("/login", (req, res)=>{
-    res.send("you hit the post route");
-});
+// app.post("/login", (req, res)=>{
+//     res.send("you hit the post route");
+// });
 
 
-app.get("/register",(req,res)=>{
-    res.render("register");
-});
+// app.get("/register",(req,res)=>{
+//     res.render("register");
+// });
 
 
 app.get("/prescription",(req,res)=>{
@@ -136,73 +140,73 @@ app.get("/prescription",(req,res)=>{
  });
  
  //INDEX - show all users
- app.get("/user", (req, res)=>{
-     User.find({}, (err, allUsers)=>{
-         if(err){
-             console.log(err);
-         } else {
-             res.render("user", {users: allUsers});
-         }
-     });
- });
+//  app.get("/user", (req, res)=>{
+//      User.find({}, (err, allUsers)=>{
+//          if(err){
+//              console.log(err);
+//          } else {
+//              res.render("user", {users: allUsers});
+//          }
+//      });
+//  });
  
- //CREATE - add new user to the database
- app.post("/user", (req, res)=>{
-     // get data from form and add to user array
-     var firstName = req.body.firstName;
-     var lastName = req.body.lastName;
-     var address = req.body.address;
-     var city = req.body.city;
-     var state = req.body.state;
-     var blood = req.body.blood;
-     var username = req.body.username;
-     var password = req.body.password;
-     var phone = req.body.phone;
-     var email = req.body.email;
-     var aadhar = req.body.aadhar;
-     var newUser = {
-         firstName: firstName,
-         lastName: lastName,
-         address: address,
-         city: city,
-         state: state,
-         blood: blood,
-         username: username,
-         password: password,
-         phone: phone,
-         email: email,
-         aadhar: aadhar,
-     };
-     // users.push(newUser);
-     //create new user and save to database
-     User.create(newUser, (err, newlyCreated)=>{
-         if(err){
-             console.log(err);
-         } else {
-             //redirect to user page
-             res.redirect("user");
-         }
-     });
- });
+//  //CREATE - add new user to the database
+//  app.post("/user", (req, res)=>{
+//      // get data from form and add to user array
+//      var firstName = req.body.firstName;
+//      var lastName = req.body.lastName;
+//      var address = req.body.address;
+//      var city = req.body.city;
+//      var state = req.body.state;
+//      var blood = req.body.blood;
+//      var username = req.body.username;
+//      var password = req.body.password;
+//      var phone = req.body.phone;
+//      var email = req.body.email;
+//      var aadhar = req.body.aadhar;
+//      var newUser = {
+//          firstName: firstName,
+//          lastName: lastName,
+//          address: address,
+//          city: city,
+//          state: state,
+//          blood: blood,
+//          username: username,
+//          password: password,
+//          phone: phone,
+//          email: email,
+//          aadhar: aadhar,
+//      };
+//      // users.push(newUser);
+//      //create new user and save to database
+//      User.create(newUser, (err, newlyCreated)=>{
+//          if(err){
+//              console.log(err);
+//          } else {
+//              //redirect to user page
+//              res.redirect("user");
+//          }
+//      });
+//  });
  
- // NEW - show form to create new user
- /*app.get("/user/new",(req,res)=>{
-     res.render("register");
- });*/
+//  // NEW - show form to create new user
+//  /*app.get("/user/new",(req,res)=>{
+//      res.render("register");
+//  });*/
  
- // SHOW - shows more info about one user
- app.get("/user/:id", (req, res)=>{
-     //find the user with provided id
-     User.findById(req.params.id).populate("prescriptions").exec((err, foundUser)=>{
-         if(err){
-             console.log(err);
-         } else {
-             //show template with that user
-             res.render("patientProfile", {user: foundUser});
-         }
-     });
+//  // SHOW - shows more info about one user
+//  app.get("/user/:id", (req, res)=>{
+//      //find the user with provided id
+//      User.findById(req.params.id).populate("prescriptions").exec((err, foundUser)=>{
+//          if(err){
+//              console.log(err);
+//          } else {
+//              //show template with that user
+//              res.render("patientProfile", {user: foundUser});
+//          }
+//      });
      
- });
+//  });
  
  //==============doctor=======
  /*app.get("/doctorRegister",(req,res)=>{
