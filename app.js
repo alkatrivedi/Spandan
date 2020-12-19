@@ -18,6 +18,7 @@ require('dotenv').config();
 
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(flash());
 
 mongoose.set('useUnifiedTopology', true);
 const url = process.env.MONGODB_URI || 3000
@@ -40,6 +41,13 @@ app.use(require("express-session")({
     saveUninitialized: false
 }));
 
+app.use((req,res,next)=>{
+    res.locals.currentUser=req.user;
+    res.locals.success=req.flash("success");
+    res.locals.error=req.flash("error");
+    next();
+});
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -52,12 +60,7 @@ passport.use(new LocalStrategy({
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-/*app.use((req,res,next)=>{
-    res.locals.currentUser=req.user;
-    res.locals.success=req.flash("success");
-    res.locals.error=req.flash("error");
-    next();
-});*/
+
 
 var userSchema = new mongoose.Schema({
     firstName: String,
@@ -193,9 +196,9 @@ app.get("/prescription",(req,res)=>{
  });
  
  // NEW - show form to create new user
- app.get("/user/new",(req,res)=>{
+ /*app.get("/user/new",(req,res)=>{
      res.render("register");
- });
+ });*/
  
  // SHOW - shows more info about one user
  app.get("/user/:id", (req, res)=>{
