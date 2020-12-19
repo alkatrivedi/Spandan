@@ -1,15 +1,25 @@
 <%- include('./partials/header') %>
 
-<h1 style="margin-top:70px">here goes the list of doctors</h1>
-<% doctors.forEach(function(doctor){ %>
-    <div style="background-color: grey;">
-        <%= doctor.firstName %>
-        <%= doctor.lastName %>
-        <p>
-            <a href="/showDoctors/<%= doctor._id %>" class="btn btn-primary">More Info</a>
-        </p>
-    </div>
-<% }); %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/doctor.css"></link>
+
+<h1 style="margin-top:50px">Here goes the Doctors Profile</h1>
+
+<div class="main">
+    <ul class="cards">
+        <% doctors.forEach(function(user){ %>
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image"><img src="https://medcare-demo.detheme.com/video/wp-content/uploads/sites/6/2016/02/doctor-profile03.jpg"></div>
+          <div class="card_content">
+            <h2 class="card_title"><%= doctor.firstName %> <%= doctor.lastName %></h2>
+            <p class="card_text">| Blood Group: <%= user.blood %> | Phone No.:  <%= doctor.phone %> | <br>| Email Address:  <%= doctor.email %> |</p>
+            <a href="/user/<%= doctor._id %>"><button class="btn card_btn">More Info</button></a>
+          </div>
+        </div>
+      </li>
+      <% }); %>
+    </ul>
+  </div>
 
 
 
