@@ -1,14 +1,15 @@
 const express                            = require("express"),      
       mongoose                           = require("mongoose"),
+      flash                              = require("connect-flash"),
       passport                           = require("passport"),
       LocalStrategy                      = require("passport-local"),
       methodOverride                     = require("method-override"),
-      bodyParser                         = require("body-parser")
+      bodyParser                         = require("body-parser"),
      // Departments                        = require("./models/departments"),
      // Treatmentreceipt                   = require("./models/treatmentreceipt"),
-     // User                               = require("./models/user")
+     User                               = require("./models/user");
 
-
+const userRoutes=require("./routes/users"); 
 
 
 const app = express();
@@ -41,14 +42,15 @@ app.use(require("express-session")({
 
 app.use(passport.initialize());
 app.use(passport.session());
-/*passport.use(new LocalStrategy({
+
+passport.use(new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password'
-}, User.authenticate()));*/
+}, User.authenticate()));
 
 
-//passport.serializeUser(User.serializeUser());
-//passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 var userSchema = new mongoose.Schema({
     firstName: String,
@@ -70,7 +72,7 @@ var userSchema = new mongoose.Schema({
      ],
 });
 
-var User = mongoose.model("User", userSchema);
+// var User = mongoose.model("User", userSchema);
 
 
 // User.create(
@@ -92,6 +94,8 @@ var User = mongoose.model("User", userSchema);
 //     {firstName: "xyz", lastName: "abc"},
 //     {firstName: "xyz", lastName: "abc"},
 // ];
+
+app.use("/",userRoutes);
 
 app.get("/", (req,res)=>{
     res.render("home");
@@ -406,7 +410,7 @@ app.post("/user/:id", (req, res)=>{
 });
 
  
-let port = process.env.PORT || 8080
+let port = process.env.PORT || 3000
 app.listen(port, ()=>{
-    console.log("Listening to port 8080.");
+    console.log("Listening to port 3000.");
 });
