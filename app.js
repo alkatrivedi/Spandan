@@ -4,7 +4,7 @@ const express                            = require("express"),
       passport                           = require("passport"),
       LocalStrategy                      = require("passport-local"),
       methodOverride                     = require("method-override"),
-      bodyParser                         = require("body-parser"),
+      bodyParser                         = require("body-parser");
      // Departments                        = require("./models/departments"),
      // Treatmentreceipt                   = require("./models/treatmentreceipt"),
      User                               = require("./models/user");
@@ -51,8 +51,8 @@ passport.use(new LocalStrategy({
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
-var userSchema = new mongoose.Schema({
+//user model
+/*var userSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
     address: String,
@@ -70,30 +70,18 @@ var userSchema = new mongoose.Schema({
            ref: "Prescription"
         }
      ],
+});*/
+
+ //var User = mongoose.model("User", userSchema);
+ //prescription model
+ var prescriptionSchema = new mongoose.Schema({
+    doctorname: String,
+    date: String,
+    note: String,
 });
 
-// var User = mongoose.model("User", userSchema);
+var Prescription = mongoose.model("Prescription", prescriptionSchema);
 
-
-// User.create(
-//     {
-//         firstName: "tssa",
-//         lastName: "tssa",
-//         city: "Blah blah",
-//     }, (err, user)=>{
-//         if(err){
-//             console.log(err);
-//         } else {
-//             console.log("newly created user: ");
-//             console.log(user);
-//         }
-//     }
-// );
-
-// var users = [
-//     {firstName: "xyz", lastName: "abc"},
-//     {firstName: "xyz", lastName: "abc"},
-// ];
 
 app.use("/",userRoutes);
 
@@ -189,7 +177,7 @@ app.get("/prescription",(req,res)=>{
  // SHOW - shows more info about one user
  app.get("/user/:id", (req, res)=>{
      //find the user with provided id
-     User.findById((req.params.id).populate, (err, foundUser)=>{
+     User.findById(req.params.id).populate("prescriptions").exec((err, foundUser)=>{
          if(err){
              console.log(err);
          } else {
@@ -302,13 +290,7 @@ app.get("/prescription",(req,res)=>{
  });
  
  //======prescription==========
- var prescriptionSchema = new mongoose.Schema({
-    doctorname: String,
-    date: String,
-    note: String,
-});
-
-var Prescription = mongoose.model("Prescription", prescriptionSchema);
+ 
 
 app.get("/user/:id/prescription/new", (req, res)=>{
     User.findById(req.params.id, function(err,foundUser){
@@ -322,91 +304,37 @@ app.get("/user/:id/prescription/new", (req, res)=>{
 });
 
 //CREATE - add new prescription to the database
-app.post("/user/:id", (req, res)=>{
-    // get data from for6m and add to user array
-    //lookup campground using id
+app.post("/user/:id/prescription", (req, res)=>{    
     User.findById(req.params.id, function(err, campground) {
-    if(err) {
-        console.log(err);
-        res.redirect("/user/"+ User._id);
-    }else{
-        //create a comment
-        Prescription.create(req.body.prescription, function(err,prescription){
-            if(err){
-                //req.flash("Something went wrong");
-                console.log(err);
-            }else{
-                var doctorname = req.body.doctorname;
-                var date = req.body.date;
-                var note = req.body.note;
-                var newPrescription={
-                    doctorname: doctorname,
-                    date: date,
-                    note: note
-                }
-                //newPrescription.save();
-                User.Prescription.push(newPrescription);
-                User.save();
-                //create new user and save to database
-                /*Doctor.create(newDoctor, (err, newlyCreatedDoctor)=>{
-                    if(err){
-                        console.log(err);
-                    } else {
-                        //redirect to user page
-                        res.redirect("showDoctors");
-                    }
-                });
-                
-                //and save comment
-                
-                
-                
-                req.flash("success","Successfully added comment");*/
-                res.redirect("/user/" + User._id);
-            }
-        });
-    }
-    });
-    /*var firstName = req.body.firstName;
-    var lastName = req.body.lastName;
-    var address = req.body.address;
-    var city = req.body.city;
-    var state = req.body.state;
-    var blood = req.body.blood;
-    var department = req.body.department;
-    var specialization = req.body.specialization;
-    var age = req.body.age;
-    var username = req.body.username;
-    var password = req.body.password;
-    var phone = req.body.phone;
-    var email = req.body.email;
-    var aadhar = req.body.aadhar;
-    var newDoctor = {
-        firstName: firstName,
-        lastName: lastName,
-        address: address,
-        city: city,
-        state: state,
-        blood: blood,
-        department: department,
-        specialization: specialization,
-        age: age,
-        username: username,
-        password: password,
-        phone: phone,
-        email: email,
-        aadhar: aadhar,
-    };
-    // users.push(newUser);
-    //create new user and save to database
-    Doctor.create(newDoctor, (err, newlyCreatedDoctor)=>{
-        if(err){
+        if(err) {
             console.log(err);
-        } else {
-            //redirect to user page
-            res.redirect("showDoctors");
+            res.redirect("/user/"+ User._id);
+        }else{
+                //create a comment
+            Prescription.create(req.body.prescription, function(err,prescription){
+                if(err){
+                    //req.flash("Something went wrong");
+                    console.log(err);
+                }else{
+                    /*var doctorname = req.body.doctorname;
+                    var date = req.body.date;
+                    var note = req.body.note;
+                    var newPrescription={
+                        doctorname: doctorname,
+                        date: date,
+                        note: note
+                    }
+                    //newPrescription.save();*/
+                    User.prescriptions.push(prescription);
+                    User.save();
+                
+                
+                    req.flash("success","Successfully added comment");
+                    res.redirect("/user/" + User._id);
+                }
+            });
         }
-    });*/
+    });   
 });
 
  

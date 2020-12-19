@@ -2,14 +2,14 @@
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/registerStyle.css" />
 <div class="container" id="mainContainer">
-  <h1 class="well" id="formHead">Prescription Note for patient name</h1>
-  <form action="/user/<%= user._id %>" method="POST">
+  <h1 class="well" id="formHead">Prescription Note for <%= user.firstname %> <%= user.lastname %></h1>
+  <form action="/user/<%= user._id %>/prescription" method="POST">
     <div class="row">
       <div class="col-sm-6 form-group">
         <label>Doctor's Name</label>
         <input
           type="text"
-          name="doctorname"
+          name="prescription[doctorname]"
           placeholder="Enter doctor's name Here.."
           class="form-control"
         />
@@ -18,7 +18,7 @@
         <label>Date of Checkup</label>
         <input
           type="text"
-          name="date"
+          name="prescription[date]"
           placeholder="Enter date of checkup Here.."
           class="form-control"
         />
@@ -28,7 +28,7 @@
       <label>Description</label>
       <input
         type="text"
-        name="note"
+        name="prescription[note]"
         placeholder="Enter prescription notes.."
         rows="3"
         class="form-control"
