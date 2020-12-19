@@ -59,6 +59,7 @@ body {
   margin-top: -350px;
   margin-right: 20px;
   height: 350px;
+  background-color: #ffffff;
 }
 
 h1 {
@@ -97,7 +98,7 @@ h1 {
 .carousel2-item {
   width: 1000px;
   margin-left: 1%;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .doct-content h2 {
@@ -280,4 +281,42 @@ div h3{
   text-align: center;
   color: #448cc0;
   font-family: 'Aclonica', sans-serif;
+}
+
+/* **********************DOCTORS PATIENTS LIST********************* */
+
+.connn{
+  padding-top: 30px;
+}
+
+.card{
+  background-image: url(https://lh3.googleusercontent.com/proxy/Lj9aILMNLZ36esy_RsBeRykKAHzddGOCJlBH7e8JpkyEm36NTFvBcxIX_3YzPl8ThNsJ9QL4ct8zyADMWv93ysYdMStZkmI8SeYYa8tnd8ZD);
+  background-repeat: no-repeat no-repeat;
+  background-size: cover;
+}
+
+.cardd{
+  background-image: url(https://i.pinimg.com/originals/5c/7d/f3/5c7df38ffdaded92c49c0f719f36c2e2.jpg);
+  background-repeat: no-repeat no-repeat;
+  background-size: cover;
+}
+.cardd::before{
+  background-color: rgba(0, 0, 0, 0.6);
+}
+/* ***************************************************************** */
+
+body { 
+	background-color: rgba(0, 0, 0, 0.849);
+  margin: 0;
+	padding: 0;
+}
+#client-testimonial-carousel {min-height: 250px;}
+
+.blog{
+  margin-top: 50px;
+}
+
+.client-review-stars{
+  padding-top: 0px;
+  padding-bottom: 10px;
 }

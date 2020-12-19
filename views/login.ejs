@@ -12,11 +12,11 @@
       </ul>
     </div>
     <div ng-app ng-init="checked = false">
-				        <form class="form-signin" action="" method="post" name="form">
+				        <form class="form-signin" action="/login" method="post" name="form">
           <label for="username">Username</label>
-          <input class="form-styling" type="text" name="username" placeholder=""/>
+          <input class="form-styling" type="text" name="username" placeholder="username"/>
           <label for="password">Password</label>
-          <input class="form-styling" type="text" name="password" placeholder=""/>
+          <input class="form-styling" type="password" name="password" placeholder="password"/>
           <input type="checkbox" id="checkbox"/>
           <label for="checkbox" ><span class="ui"></span>Keep me signed in</label>
           <div class="btn-animate">
@@ -32,7 +32,7 @@
                   <input type="checkbox" id="checkbox"/>
                   <label for="checkbox" ><span class="ui"></span>Keep me signed in</label>
                   <div class="btn-animate">
-                    <a class="btn-signin">Sign in</a>
+                    <a href="/" class="btn-signin">Sign in</a>
                   </div>
 				        </form>
       
@@ -51,12 +51,11 @@
       <div>
         <div class="cover-photo"></div>
         <div class="profile-photo"></div>
-        <h1 class="welcome">Welcome, Chris</h1>
+        <h1 class="welcome">Welcome</h1>
         <a class="btn-goback" value="Refresh" onClick="history.go()">Go back</a>
       </div>
   </div>
     
-  <a id="refresh" value="Refresh" onClick="history.go()">
 
   </a>
 </div>
