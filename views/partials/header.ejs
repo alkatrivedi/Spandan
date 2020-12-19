@@ -51,12 +51,18 @@
     
             <div class="collapse navbar-collapse justify-content-end" id="navLinks">
                 <ul class="navbar-nav">
+                    <% if(!currentUser){ %>
                     <li class="nav-item">
-                        <a href="../login" class="nav-link">SIGN IN</a>
+                        <a href="/login" class="nav-link">SIGN IN</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../register" class="nav-link">REGISTER</a>
+                        <a href="/register" class="nav-link">REGISTER</a>
                     </li>
+                    <% }else{ %>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">LOGOUT</a>
+                    </li>
+                    <% } %>
                 </ul>
             </div>
         </nav>
