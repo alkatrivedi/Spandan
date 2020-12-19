@@ -115,6 +115,10 @@ app.get("/login", (req, res) => {
     res.render("login");
 });
 
+app.post("/login", (req, res)=>{
+    res.send("you hit the post route");
+});
+
 
 app.get("/register",(req,res)=>{
     res.render("register");
