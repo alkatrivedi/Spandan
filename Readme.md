@@ -1,6 +1,6 @@
 # Spandan- Multispeciality Hospital website
 
-## HINT HACKADEMIC - Going Contactless
+## HINT Hacka-demic - Going Contactless
 
 A Hospital involves hundreds of work, which is currently carried out physically. Evolving Tech has always proven that, how its efficient in making the things work Contact-less, and even with less hassle. We have come up with a idea of making the things in Hospiatl go contact-less.
 
@@ -19,7 +19,7 @@ Spandan is a Hospital which has a website(which is mobile responsive, so as mobi
 - A prescription will not be written by doctor, rather he will open respective patient's profile and add a  
   prescription in a form, typed one. So, that patient too can understand it, and will stay with him always on the account.
 
-![alt-text](https://github.com/alkatrivedi/Spandan/spandanWorkflow.jpeg)
+![alt-text](https://github.com/alkatrivedi/Spandan/blob/master/spandanWorkflow.jpeg)
 
 ### How it makes CONTACT-LESS?
 
@@ -37,7 +37,7 @@ Spandan is a Hospital which has a website(which is mobile responsive, so as mobi
 - And many other features of this application will help in going contact-less and secure medical process in a  
   hospital.
 
-## Spandan- A Multispeciality Hospital website, a Node.js Application, using MongoDB for database and osted on heroku.
+##### Spandan- A Multispeciality Hospital website, a Node.js Application, using MongoDB for database and hosted on heroku.
 
 ## To install and view locally
 
