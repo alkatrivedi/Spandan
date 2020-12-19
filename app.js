@@ -322,7 +322,6 @@ app.post("/user/:id/prescription", (req, res)=>{
             console.log(err);
             res.redirect("/user/"+ User._id);
         }else{
-                //create a comment
             Prescription.create(req.body.prescription, function(err,prescription){
                 if(err){
                     //req.flash("Something went wrong");
