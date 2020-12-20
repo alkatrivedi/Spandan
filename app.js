@@ -113,6 +113,10 @@ app.get("/contact", (req, res) => {
     res.render("contact");
 });
 
+app.get("/covid",(req,res)=>{
+    res.render("covid");
+});
+
 app.get("/login", (req, res) => {
     res.render("login");
 });
