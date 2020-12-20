@@ -182,9 +182,9 @@ app.get("/prescription",(req,res)=>{
  });
  
  // NEW - show form to create new user
- /*app.get("/user/new",(req,res)=>{
+ app.get("/user/new",(req,res)=>{
      res.render("register");
- });*/
+ });
  
  // SHOW - shows more info about one user
  app.get("/user/:id", (req, res)=>{
@@ -350,6 +350,6 @@ app.post("/user/:id/prescription", (req, res)=>{
 
  
 let port = process.env.PORT || 3000
-app.listen(port, ()=>{
-    console.log("Listening to port 3000.");
+app.listen(process.env.PORT, process.env.IP, function(){
+    console.log("started!");
 });

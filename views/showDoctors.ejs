@@ -6,14 +6,14 @@
 
 <div class="main">
     <ul class="cards">
-        <% doctors.forEach(function(user){ %>
+        <% doctors.forEach(function(doctor){ %>
       <li class="cards_item">
         <div class="card">
           <div class="card_image"><img src="https://medcare-demo.detheme.com/video/wp-content/uploads/sites/6/2016/02/doctor-profile03.jpg"></div>
           <div class="card_content">
             <h2 class="card_title"><%= doctor.firstName %> <%= doctor.lastName %></h2>
-            <p class="card_text">| Blood Group: <%= user.blood %> | Phone No.:  <%= doctor.phone %> | <br>| Email Address:  <%= doctor.email %> |</p>
-            <a href="/user/<%= doctor._id %>"><button class="btn card_btn">More Info</button></a>
+            <p class="card_text">| Blood Group: <%= doctor.blood %> | Phone No.:  <%= doctor.phone %> | <br>| Email Address:  <%= doctor.email %> |</p>
+            <a href="/showDoctors/<%= doctor._id %>"><button class="btn card_btn">More Info</button></a>
           </div>
         </div>
       </li>
