@@ -1,34 +1,8 @@
 const express=require("express");
 const passport = require("passport");
-const router=express.Router({mergeParams:true});
-const catchAsync=require("../utils/catchAsync");
-const User = require("../models/user");
-
-router.get("/", (req, res)=>{
-    res.render("../views/home");
-});
-
- //INDEX - show all users
- router.get("/user", (req, res)=>{
-     User.find({}, (err, allUsers)=>{
-         if(err){
-             console.log(err);
-         } else {
-             res.render("user", {users: allUsers});
-         }
-     });
- });
-
-
- router.get("/login", function(req, res) {
-    res.render("login", {page: 'login'}); 
- });
- // app.post("/login", middleware, callback);
-//  router.post("/login", passport.authenticate("local", {
-//          successRedirect: "/campgrounds",
-//          failureRedirect: "/login"
-//      }),function(req,res){
-//  });
+const router=express.Router();
+const catchAsync=require("../utils/catchAsync")
+const User=require("../models/user");
 
 router.get("/register",(req,res)=>{
     res.render("../views/register");
@@ -36,21 +10,18 @@ router.get("/register",(req,res)=>{
 
  router.post("/register",async(req,res,next)=>{
      try{
-     const{firstName, lastName, address, city, state, blood, username, password, phone, email, aadhar} = req.body;
-     var err;
-     const user=new User({firstName, lastName, address, city, state, blood, username, phone, email, aadhar});
+     const{email,username,password} = req.body;
+     const user=new User({email,username});
      const registeredUser = await User.register(user,password);
      req.login(registeredUser,err=>{
         if(err) return next(err);
         req.flash("success","Welcome to Spandan Hospital");
-        res.redirect("user");
+        res.redirect("/user");
      })
      } catch(e){
          req.flash("error","This username is already registered");
-         res.redirect("register");
+         res.redirect("/register");
      }
-    // const{firstName, lastName, address, city, state, blood, username, password, phone, email, aadhar} = req.body;
-    // res.render("../views/login.ejs");
 });
 
  /*router.post("/register",function(req,res){
@@ -67,7 +38,9 @@ router.get("/register",(req,res)=>{
     });
  });*/
 
-
+router.get("/login",(req,res)=>{
+    res.render("../views/login.ejs");
+});
 
 /*router.post("/login",passport.authenticate("local",{failureFlash:true, failureRedirect: "/login"}),(req,res)=>{
     req.flash("success","Welcome Back!!!");
@@ -76,7 +49,7 @@ router.get("/register",(req,res)=>{
 
 router.post("/login",passport.authenticate("local",
 	{
-        successRedirect: "/",
+		successRedirect: "/",
 		failureRedirect: "/login"
 	}),function(req,res){
         req.flash("success","Welcome Back!!!");
@@ -86,6 +59,6 @@ router.get('/logout', (req, res) => {
     req.logout();
     req.flash('success', "Goodbye!");
     res.redirect('/');
-});
+})
 
 module.exports=router;
