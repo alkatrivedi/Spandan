@@ -113,6 +113,18 @@ app.get("/contact", (req, res) => {
     res.render("contact");
 });
 
+<<<<<<< HEAD
+app.get("/covid",(req,res)=>{
+    res.render("covid");
+});
+
+=======
+<<<<<<< HEAD
+>>>>>>> adf3a58ee1c5fea568feb7a58987c8b973266909
+app.get("/login", (req, res) => {
+    res.render("login");
+});
+=======
 app.get("/covid",(req,res)=>{
     res.render("covid");
 });
@@ -120,6 +132,10 @@ app.get("/covid",(req,res)=>{
 app.get("/login", (req, res) => {
     res.render("login");
 });
+// app.get("/login", (req, res) => {
+//     res.render("login");
+// });
+>>>>>>> 46aea9e753b4e7e6f837842c9636878f37963303
 
 app.post("/login", (req, res)=>{
     res.send("you hit the post route");
