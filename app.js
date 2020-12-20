@@ -113,9 +113,22 @@ app.get("/contact", (req, res) => {
     res.render("contact");
 });
 
+<<<<<<< HEAD
 app.get("/login", (req, res) => {
     res.render("login");
 });
+=======
+app.get("/covid",(req,res)=>{
+    res.render("covid");
+});
+
+app.get("/login", (req, res) => {
+    res.render("login");
+});
+// app.get("/login", (req, res) => {
+//     res.render("login");
+// });
+>>>>>>> 46aea9e753b4e7e6f837842c9636878f37963303
 
 app.post("/login", (req, res)=>{
     res.send("you hit the post route");
@@ -322,7 +335,6 @@ app.post("/user/:id/prescription", (req, res)=>{
             console.log(err);
             res.redirect("/user/"+ User._id);
         }else{
-                //create a comment
             Prescription.create(req.body.prescription, function(err,prescription){
                 if(err){
                     //req.flash("Something went wrong");
