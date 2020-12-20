@@ -70,4 +70,4 @@ To view in your brower navigate to `http://localhost:3000` on your browser
 ##### Taniya
 
 Visit our website here:
-[https://spandan-hospital.herokuapp.com/](link)
+[https://spandan-hospital.herokuapp.com/]
