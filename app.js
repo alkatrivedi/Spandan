@@ -350,6 +350,6 @@ app.post("/user/:id/prescription", (req, res)=>{
 
  
 let port = process.env.PORT || 3000
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(port, process.env.IP, function(){
     console.log("started!");
 });
